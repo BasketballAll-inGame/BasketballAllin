@@ -5870,3 +5870,302 @@ html body #modalContent button.agent-choice-v879 b {
     font-size:18px!important;
   }
 }
+
+
+/* =========================================================
+   V8.8.1 手機介面精準修正版
+   目標：手機直向時絕不維持桌面雙欄。
+   ========================================================= */
+@media screen and (max-width: 900px) {
+
+  html,
+  body {
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    overflow-x:hidden!important;
+  }
+
+  body {
+    margin:0!important;
+    padding:0!important;
+  }
+
+  /* 頂部 */
+  .topbar,
+  header {
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    position:sticky!important;
+    top:0!important;
+    z-index:100!important;
+    display:flex!important;
+    flex-wrap:wrap!important;
+    gap:6px!important;
+    padding:8px 10px!important;
+  }
+
+  #seasonLabel {
+    width:100%!important;
+    flex:0 0 100%!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    font-size:12px!important;
+    line-height:1.4!important;
+  }
+
+  /* 主版面：不管舊版是 grid/flex/fixed，全部改成單欄 */
+  .layout,
+  .layout.screenshot-layout,
+  #app,
+  .app,
+  main {
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    display:block!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:auto!important;
+    overflow:visible!important;
+    position:static!important;
+    transform:none!important;
+    zoom:1!important;
+    padding:8px!important;
+    margin:0!important;
+  }
+
+  /* 三大欄強制 100% */
+  .side,
+  .center,
+  .right {
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    position:static!important;
+    inset:auto!important;
+    float:none!important;
+    display:block!important;
+    overflow:visible!important;
+    margin:0 0 8px 0!important;
+    padding:0!important;
+  }
+
+  /* 所有主要卡片取消固定尺寸 */
+  .side > *,
+  .center > *,
+  .right > *,
+  .card,
+  .mini,
+  .result-section,
+  .teammate-inline-section {
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    position:static!important;
+    inset:auto!important;
+    float:none!important;
+    overflow:visible!important;
+    margin:0 0 8px 0!important;
+  }
+
+  /* 個人資訊與能力值 */
+  #profile,
+  #stats {
+    width:100%!important;
+    max-width:100%!important;
+    overflow:visible!important;
+  }
+
+  #profile {
+    font-size:13px!important;
+    line-height:1.5!important;
+  }
+
+  #stats .stat {
+    margin:6px 0!important;
+  }
+
+  #stats .stat > span:first-child,
+  #stats .stat-now,
+  #stats .stat-cap {
+    font-size:13px!important;
+  }
+
+  /* 中央事件區 */
+  #log,
+  .log {
+    width:100%!important;
+    min-height:140px!important;
+    max-height:none!important;
+    overflow:visible!important;
+  }
+
+  .event-card,
+  .event,
+  .log > * {
+    width:100%!important;
+    max-width:100%!important;
+    box-sizing:border-box!important;
+    font-size:12px!important;
+    line-height:1.55!important;
+  }
+
+  /* 隊友表格：只有表格容器能左右滑 */
+  .teammate-inline-section {
+    overflow:hidden!important;
+  }
+
+  .teammate-table-wrap,
+  .table-wrap,
+  .roster-scroll {
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:auto!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+
+  .teammate-table {
+    min-width:780px!important;
+    width:max-content!important;
+  }
+
+  .teammate-table th,
+  .teammate-table td {
+    font-size:11px!important;
+    padding:6px 5px!important;
+    white-space:nowrap!important;
+  }
+
+  /* 操作面板 */
+  #menu {
+    width:100%!important;
+    max-width:100%!important;
+    overflow:visible!important;
+  }
+
+  #menu .menu-grid,
+  #menu .action-grid,
+  #menu .actions,
+  .menu-grid {
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+    width:100%!important;
+  }
+
+  #menu button,
+  .right button {
+    width:100%!important;
+    min-width:0!important;
+    min-height:50px!important;
+    box-sizing:border-box!important;
+    white-space:normal!important;
+    overflow-wrap:anywhere!important;
+    font-size:13px!important;
+    padding:9px!important;
+  }
+
+  #menu details,
+  #menu .menu-more-v837 {
+    width:100%!important;
+    max-width:100%!important;
+  }
+
+  /* 人生紀錄 */
+  #history {
+    width:100%!important;
+    max-width:100%!important;
+    min-height:120px!important;
+    max-height:300px!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    font-size:12px!important;
+  }
+
+  /* Modal 手機化 */
+  #modal.modal {
+    padding:0!important;
+    align-items:flex-end!important;
+  }
+
+  #modal .modal-box {
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    max-height:90vh!important;
+    margin:0!important;
+    border-radius:16px 16px 0 0!important;
+    overflow:hidden!important;
+  }
+
+  #modalContent {
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    max-height:90vh!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    padding:14px!important;
+    box-sizing:border-box!important;
+  }
+
+  #modalContent .choices {
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+
+  #modalContent button {
+    max-width:100%!important;
+    white-space:normal!important;
+    overflow-wrap:anywhere!important;
+  }
+
+  #modalContent .modern-grid,
+  #modalContent .coach-main-actions-v81 {
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  #modalContent .agent-grid-v855 {
+    grid-template-columns:1fr!important;
+  }
+
+  /* 避免舊版固定寬度與 transform 縮放 */
+  [style*="min-width"],
+  [style*="width: 1400"],
+  [style*="width:1400"] {
+    min-width:0!important;
+    max-width:100%!important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #menu .menu-grid,
+  #menu .action-grid,
+  #menu .actions,
+  .menu-grid {
+    grid-template-columns:1fr!important;
+  }
+
+  #modalContent .modern-grid,
+  #modalContent .coach-main-actions-v81 {
+    grid-template-columns:1fr!important;
+  }
+
+  .topbar .brand,
+  header .brand {
+    font-size:18px!important;
+  }
+}
