@@ -80,7 +80,7 @@ const MASCOTS=["獵鷹","暴風","海狼","黑熊","猛虎","雷霆","巨鯊","�
 let G=null;
 
 
-/* V8.9.2：獎項顯示年份，例如「2026 新人王」 */
+/* V8.9.3：獎項顯示年份，例如「2026 新人王」 */
 function awardLabelV856(award, year){
   const y = Number(year || G.year || new Date().getFullYear());
   const text = String(award || "").trim();
@@ -631,7 +631,7 @@ function coachPoachV54(){
   return coachJobMarketV587();
 }
 
-function markSaveVersionV60(){if(G)G.saveVersion="8.9.2";}
+function markSaveVersionV60(){if(G)G.saveVersion="8.9.3";}
 function normalize(){
  if(!G.logs)G.logs=[];if(!G.history)G.history=[];if(!G.awards)G.awards=[];if(!G.hof)G.hof=[];if(!G.seasons)G.seasons=[];
  if(G.careerEnded==null)G.careerEnded=false;if(!G.max)G.max={};if(!G.breakthrough)G.breakthrough={};
@@ -789,7 +789,7 @@ function renderFeed(x){
 }
 function initPlayer(d){
  G={name:d.name,nationality:d.nationality||"台灣",height:+d.height,weight:+d.weight,number:+d.number,hand:d.hand,pos1:d.pos1,pos2:d.pos2,phase:"高中",hblDivision:null,year:1,startYear:d.startYear||2026,absoluteAge:16,absoluteCalendarYear:d.startYear||2026,actions:0,injury:0,leagueUsed:false,storyCount:0,logs:[],history:[],awards:[],hof:[],seasons:[],stats:{},max:{},breakthrough:{},school:pick(schools),team:null,theme:"theme-sport",careerEnded:false,proKey:null,proLeague:null,wealthTWD:0,coachSalaryTWD:null,careerMetrics:{teamChanges:0,nbaTrades:0,signedMoves:0,injuryEvents:0,healthySeasons:0,playoffSeasons:0,titles:0,breakthroughWins:0,breakthroughFails:0},teamStints:{},rosters:{}};
- // V8.9.2：五項基礎能力各自隨機 50～70，且平均至少 60。
+ // V8.9.3：五項基礎能力各自隨機 50～70，且平均至少 60。
  // 不再額外贈送 10 點初始配點。
  let initialBaseStats={};
  let initialBaseAvg=0;
@@ -1016,7 +1016,7 @@ function modernDashboardV7(){
 }
 
 
-/* ===== V8.9.2 隨機劇情引擎 ===== */
+/* ===== V8.9.3 隨機劇情引擎 ===== */
 const STORY_POOLS_V857={
  modern:[
   {title:"更衣室風波",icon:"🏀",text:"球隊近期戰績不穩，一名隊友受訪時暗示「有人太在意個人數據」。媒體開始猜測他是在影射你。",
@@ -2253,7 +2253,7 @@ function render(){
  if(!G.max)G.max={};
  ALL.forEach(k=>{if(!Number.isFinite(G.max[k]))G.max[k]=100;});normalize();
  document.body.className=`layout-v590 reference-canvas-v594 ${G.theme||"theme-sport"}`;
- // V8.9.2：render 主流程只做安全的 data-theme 同步，避免主題函式錯誤中斷整個遊戲資料渲染。
+ // V8.9.3：render 主流程只做安全的 data-theme 同步，避免主題函式錯誤中斷整個遊戲資料渲染。
  const themeMapV862={"theme-sport":"court","theme-court":"wood","theme-neon":"neon","theme-paper":"paper"};
  const safeThemeV862=themeMapV862[G.theme||"theme-sport"]||"court";
  document.body.setAttribute("data-theme",safeThemeV862);
@@ -4420,7 +4420,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 
 
-/* V8.9.2：完整主題套用與即時重繪 */
+/* V8.9.3：完整主題套用與即時重繪 */
 function applyFullThemeV859(theme){
   try{
     const allowed=["court","wood","neon","paper"];
@@ -4464,7 +4464,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.2 手機導覽 ================= */
+/* ================= V8.9.3 手機導覽 ================= */
 (function mobileUiV883(){
   function isMobile(){return window.matchMedia && window.matchMedia("(max-width:900px)").matches}
 
@@ -4515,11 +4515,11 @@ document.addEventListener("click",(e)=>{
   });
 })();
 
-/* V8.9.2 手機底部導覽固定與選取狀態 */
+/* V8.9.3 手機底部導覽固定與選取狀態 */
 (function(){document.addEventListener('click',function(e){const btn=e.target.closest('[data-mobile-target-v883]');if(!btn)return;document.querySelectorAll('[data-mobile-target-v883]').forEach(x=>x.classList.remove('active'));btn.classList.add('active');});})();
 
 
-/* ================= V8.9.2 創角前手機導覽隱藏 ================= */
+/* ================= V8.9.3 創角前手機導覽隱藏 ================= */
 (function mobilePreCreateStateV887(){
   function sync(){
     try{
@@ -4565,7 +4565,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.2 手機重疊安全檢查 ================= */
+/* ================= V8.9.3 手機重疊安全檢查 ================= */
 (function mobileOverlapGuardV889(){
   function sync(){
     if(!document.body)return;
@@ -4593,7 +4593,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.2 手機操作中心 ================= */
+/* ================= V8.9.3 手機操作中心 ================= */
 (function mobileActionCenterV891(){
   function isMobileV891(){
     return !!(window.matchMedia && window.matchMedia("(max-width:900px)").matches);
@@ -4745,7 +4745,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.2 手機獨立操作 Overlay ================= */
+/* ================= V8.9.3 手機獨立操作 Overlay ================= */
 (function mobileActionOverlayV892(){
   const isMobile=()=>window.matchMedia && window.matchMedia("(max-width:900px)").matches;
 
@@ -4925,4 +4925,35 @@ document.addEventListener("click",(e)=>{
       return r;
     };
   }
+})();
+
+
+/* ================= V8.9.3 原操作面板強制隱藏 ================= */
+(function mobileMenuHardFixV893(){
+  function apply(){
+    if(!(window.matchMedia && window.matchMedia("(max-width:900px)").matches)) return;
+    const menu = document.getElementById("menu");
+    if(!menu) return;
+
+    menu.style.setProperty("display","none","important");
+
+    /* 優先找真正的卡片容器，而不是整個右欄 */
+    let card = menu.closest(".card, .panel, section, aside");
+    if(card && card !== document.body){
+      card.classList.add("mobile-original-menu-card-v893");
+      card.style.setProperty("display","none","important");
+    }
+  }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", apply);
+  } else {
+    apply();
+  }
+
+  window.addEventListener("resize", apply);
+
+  /* renderMenu 會重建內容，所以持續監看 DOM，確保舊面板不會復活 */
+  const observer = new MutationObserver(apply);
+  observer.observe(document.documentElement,{childList:true,subtree:true});
 })();

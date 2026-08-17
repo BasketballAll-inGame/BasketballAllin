@@ -8042,3 +8042,33 @@ html body #modalContent button.agent-choice-v879 b {
   .mobile-action-copy-v892 small{font-size:10.5px!important}
   .mobile-action-arrow-v892{width:18px!important;min-width:18px!important;font-size:22px!important}
 }
+
+
+/* =========================================================
+   V8.9.3 手機原始操作面板 HARD FIX
+   之前 selector 綁定 reference-canvas-v594，部分主題不成立。
+   現在所有手機主題一律隱藏原 #menu 與其卡片。
+   ========================================================= */
+@media (max-width: 900px) {
+  #menu {
+    display: none !important;
+  }
+
+  /* 現代瀏覽器：直接隱藏含 #menu 的原始卡片 */
+  .card:has(#menu),
+  aside:has(#menu),
+  section:has(#menu),
+  .panel:has(#menu) {
+    display: none !important;
+  }
+
+  /* JS 加上的保險 class */
+  .mobile-original-menu-card-v893 {
+    display: none !important;
+  }
+
+  /* 避免原操作區留下空白高度 */
+  .right:has(#menu) {
+    min-height: 0 !important;
+  }
+}
