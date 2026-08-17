@@ -6280,3 +6280,474 @@ html body #modalContent button.agent-choice-v879 b {
 @media screen and (max-width:430px){
   body.reference-canvas-v594 #menu .menu-grid{grid-template-columns:1fr!important;}
 }
+
+
+/* =========================================================
+   V8.8.3 手機專屬介面
+   參考現代籃球 App：深綠黑底、金色重點、卡片式資訊、
+   底部導覽；不使用球員頭貼。
+   桌面版完全不受影響。
+   ========================================================= */
+
+.mobile-menu-btn-v883,
+.mobile-bottom-nav-v883,
+.mobile-quick-menu-v883{display:none}
+
+@media screen and (max-width:900px){
+
+  :root{
+    --m883-bg:#061b17;
+    --m883-bg2:#0a251f;
+    --m883-card:#0d2d25;
+    --m883-card2:#12372e;
+    --m883-line:#2e6d59;
+    --m883-gold:#f1c74a;
+    --m883-gold2:#dca934;
+    --m883-cyan:#70dfc8;
+    --m883-text:#f4f2df;
+    --m883-muted:#b9d1c8;
+  }
+
+  html,body{
+    background:
+      radial-gradient(circle at 10% 0%,rgba(40,110,74,.20),transparent 30%),
+      linear-gradient(180deg,#041612,#071d18 60%,#03120f)!important;
+    color:var(--m883-text)!important;
+  }
+
+  body.reference-canvas-v594{
+    padding-bottom:84px!important;
+    font-family:"Noto Sans TC","Microsoft JhengHei","Segoe UI",sans-serif!important;
+  }
+
+  /* ===== 頂部品牌列 ===== */
+  body.reference-canvas-v594 .topbar{
+    background:rgba(4,22,18,.96)!important;
+    border-bottom:1px solid rgba(241,199,74,.28)!important;
+    box-shadow:0 6px 20px rgba(0,0,0,.24)!important;
+    min-height:72px!important;
+    padding:10px 74px 9px 14px!important;
+    display:block!important;
+    backdrop-filter:blur(10px);
+  }
+
+  body.reference-canvas-v594 .brand{
+    color:#fffdf0!important;
+    font-size:23px!important;
+    font-weight:900!important;
+    letter-spacing:.5px!important;
+    line-height:1.15!important;
+  }
+
+  body.reference-canvas-v594 .brand::first-letter{
+    color:#ff8a24!important;
+  }
+
+  body.reference-canvas-v594 #seasonLabel{
+    color:var(--m883-cyan)!important;
+    font-size:12px!important;
+    font-weight:700!important;
+    margin-top:4px!important;
+  }
+
+  body.reference-canvas-v594 .top-actions{
+    display:none!important;
+  }
+
+  .mobile-menu-btn-v883{
+    display:grid!important;
+    place-items:center!important;
+    position:absolute!important;
+    right:12px!important;
+    top:12px!important;
+    width:48px!important;
+    height:48px!important;
+    min-height:48px!important;
+    border-radius:13px!important;
+    border:1px solid #4c936f!important;
+    background:linear-gradient(180deg,#123a2e,#0c2b22)!important;
+    color:#fff!important;
+    font-size:24px!important;
+    font-weight:900!important;
+    box-shadow:0 0 18px rgba(98,222,166,.12)!important;
+    z-index:105!important;
+  }
+
+  /* ===== 主畫面改為卡片式單欄 ===== */
+  body.reference-canvas-v594 .layout.screenshot-layout{
+    padding:10px 10px 16px!important;
+    gap:11px!important;
+  }
+
+  /* 讓三欄外殼消失，使內部卡片可以自由排序 */
+  body.reference-canvas-v594 .side,
+  body.reference-canvas-v594 .center,
+  body.reference-canvas-v594 .right{
+    display:contents!important;
+  }
+
+  body.reference-canvas-v594 .side > .card:nth-child(1){order:1!important}
+  body.reference-canvas-v594 .side > .mini{order:2!important}
+  body.reference-canvas-v594 .center > .result-section{order:3!important}
+  body.reference-canvas-v594 .side > .card:nth-child(2){order:4!important}
+  body.reference-canvas-v594 .right > .card:nth-child(1){order:5!important}
+  body.reference-canvas-v594 .center > .teammate-inline-section{order:6!important}
+  body.reference-canvas-v594 .right > .card:nth-child(2){order:7!important}
+
+  body.reference-canvas-v594 .card,
+  body.reference-canvas-v594 .mini{
+    background:
+      linear-gradient(180deg,rgba(19,57,47,.98),rgba(8,37,30,.98))!important;
+    border:1px solid rgba(103,199,151,.52)!important;
+    border-radius:18px!important;
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.02),
+      0 8px 20px rgba(0,0,0,.22)!important;
+    color:var(--m883-text)!important;
+    padding:14px!important;
+  }
+
+  body.reference-canvas-v594 .card h3{
+    color:#fff9df!important;
+    font-size:20px!important;
+    font-weight:900!important;
+    margin:0 0 11px!important;
+    letter-spacing:.3px!important;
+  }
+
+  /* ===== 個人資料：無頭貼，做球員摘要卡 ===== */
+  body.reference-canvas-v594 .profile{
+    position:relative!important;
+    overflow:hidden!important;
+    padding:15px!important;
+  }
+
+  body.reference-canvas-v594 .profile::before{
+    content:"🏀";
+    position:absolute;
+    right:-4px;
+    top:-15px;
+    font-size:88px;
+    opacity:.055;
+    transform:rotate(-12deg);
+    pointer-events:none;
+  }
+
+  body.reference-canvas-v594 #profile{
+    color:#eaf5ef!important;
+    font-size:14px!important;
+    line-height:1.52!important;
+  }
+
+  body.reference-canvas-v594 #profile img,
+  body.reference-canvas-v594 .profile img,
+  body.reference-canvas-v594 [class*="player-photo"],
+  body.reference-canvas-v594 [class*="avatar"]{
+    display:none!important;
+  }
+
+  body.reference-canvas-v594 #profile .left-collapse-head-v838{
+    background:linear-gradient(180deg,#173f33,#12362c)!important;
+    border:1px solid #39785f!important;
+    color:#f7f2d7!important;
+    border-radius:10px!important;
+    min-height:40px!important;
+  }
+
+  /* ===== 受傷率/剩餘動作做快捷狀態卡 ===== */
+  body.reference-canvas-v594 .side > .mini{
+    background:linear-gradient(90deg,#0c3329,#123e32)!important;
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+  }
+
+  body.reference-canvas-v594 .side > .mini > div{
+    background:rgba(0,0,0,.12)!important;
+    border:1px solid rgba(112,223,200,.18)!important;
+    border-radius:11px!important;
+    padding:11px 8px!important;
+    font-size:12px!important;
+    color:var(--m883-muted)!important;
+  }
+
+  body.reference-canvas-v594 .side > .mini b{
+    display:block!important;
+    margin-top:3px!important;
+    color:var(--m883-gold)!important;
+    font-size:19px!important;
+  }
+
+  /* ===== 本年事件 ===== */
+  body.reference-canvas-v594 .result-section{
+    background:linear-gradient(180deg,#0b2f27,#08261f)!important;
+  }
+
+  body.reference-canvas-v594 .result-heading{
+    border-bottom:1px solid rgba(112,223,200,.16)!important;
+    padding-bottom:8px!important;
+  }
+
+  body.reference-canvas-v594 .result-heading h3{
+    margin-bottom:0!important;
+  }
+
+  body.reference-canvas-v594 .season-chip,
+  body.reference-canvas-v594 .pill,
+  body.reference-canvas-v594 .chip{
+    background:#173f33!important;
+    color:#fff8dc!important;
+    border:1px solid #407b64!important;
+  }
+
+  body.reference-canvas-v594 .feed-card,
+  body.reference-canvas-v594 .log > *{
+    background:linear-gradient(180deg,#123b30,#0f332a)!important;
+    border:1px solid #347359!important;
+    border-radius:14px!important;
+    margin-bottom:9px!important;
+    padding:11px!important;
+    color:#f2f4eb!important;
+  }
+
+  body.reference-canvas-v594 .feed-title{
+    color:var(--m883-gold)!important;
+    font-weight:900!important;
+  }
+
+  body.reference-canvas-v594 .feed-text{
+    color:#edf3ed!important;
+  }
+
+  body.reference-canvas-v594 .feed-big-icon{
+    background:rgba(241,199,74,.10)!important;
+    border:1px solid rgba(241,199,74,.28)!important;
+    color:var(--m883-gold)!important;
+    border-radius:12px!important;
+  }
+
+  /* ===== 能力值：手機卡片雙區塊感 ===== */
+  body.reference-canvas-v594 #stats{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:0 18px!important;
+  }
+
+  body.reference-canvas-v594 #stats .stat{
+    margin:5px 0 8px!important;
+  }
+
+  body.reference-canvas-v594 #stats .stat:nth-child(-n+5){
+    grid-column:1!important;
+  }
+
+  body.reference-canvas-v594 #stats .stat:nth-child(n+6){
+    grid-column:2!important;
+  }
+
+  body.reference-canvas-v594 #stats .stat:nth-child(6){
+    grid-row:1!important;
+  }
+
+  body.reference-canvas-v594 #stats .stat-rule-note{
+    grid-column:1/-1!important;
+    margin-top:7px!important;
+    background:rgba(0,0,0,.13)!important;
+    border:1px dashed #447b67!important;
+    color:#c9ddd5!important;
+  }
+
+  body.reference-canvas-v594 #stats .stat > span:first-child{
+    color:#f3f0dc!important;
+    font-weight:800!important;
+  }
+
+  body.reference-canvas-v594 #stats .stat-now,
+  body.reference-canvas-v594 #stats .stat-cap{
+    color:var(--m883-gold)!important;
+    font-weight:900!important;
+  }
+
+  body.reference-canvas-v594 #stats .bar{
+    background:#20493e!important;
+  }
+
+  body.reference-canvas-v594 #stats .bar > i,
+  body.reference-canvas-v594 #stats .bar > span,
+  body.reference-canvas-v594 #stats .bar > div{
+    background:linear-gradient(90deg,var(--m883-gold2),#f6d866)!important;
+  }
+
+  /* ===== 操作面板 ===== */
+  body.reference-canvas-v594 #menu .menu-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  body.reference-canvas-v594 #menu button{
+    background:linear-gradient(180deg,#173d32,#103329)!important;
+    border:1px solid #3f7d64!important;
+    color:#f7f3df!important;
+    border-radius:12px!important;
+    font-weight:800!important;
+  }
+
+  body.reference-canvas-v594 #menu button .svg-icon svg{
+    stroke:var(--m883-gold)!important;
+  }
+
+  /* ===== 隊友：不顯示照片，只保留資料 ===== */
+  body.reference-canvas-v594 .teammate-inline-section img,
+  body.reference-canvas-v594 #teammateInline img,
+  body.reference-canvas-v594 [class*="teammate-photo"],
+  body.reference-canvas-v594 [class*="player-avatar"]{
+    display:none!important;
+  }
+
+  body.reference-canvas-v594 .teammate-inline-section{
+    background:linear-gradient(180deg,#0b2e26,#08231d)!important;
+  }
+
+  body.reference-canvas-v594 .teammate-table-wrap{
+    border-radius:12px!important;
+    border:1px solid #315f4e!important;
+  }
+
+  body.reference-canvas-v594 .teammate-table thead th{
+    background:#173f33!important;
+    color:#fff5d3!important;
+  }
+
+  body.reference-canvas-v594 .teammate-table tbody td{
+    background:#0e3028!important;
+    color:#eef4ec!important;
+  }
+
+  body.reference-canvas-v594 .teammate-table tbody tr:nth-child(even) td{
+    background:#12372e!important;
+  }
+
+  /* ===== 人生紀錄 ===== */
+  body.reference-canvas-v594 #history{
+    color:#d9e6df!important;
+  }
+
+  /* ===== 手機底部導覽 ===== */
+  .mobile-bottom-nav-v883{
+    display:grid!important;
+    grid-template-columns:repeat(5,1fr)!important;
+    position:fixed!important;
+    left:8px!important;
+    right:8px!important;
+    bottom:max(8px,env(safe-area-inset-bottom))!important;
+    z-index:140!important;
+    height:66px!important;
+    background:rgba(4,27,22,.96)!important;
+    border:1px solid #316d57!important;
+    border-radius:21px!important;
+    box-shadow:0 8px 28px rgba(0,0,0,.44)!important;
+    overflow:hidden!important;
+    backdrop-filter:blur(12px)!important;
+  }
+
+  .mobile-bottom-nav-v883 button{
+    min-width:0!important;
+    border:0!important;
+    border-right:1px solid rgba(112,223,200,.10)!important;
+    border-radius:0!important;
+    background:transparent!important;
+    color:#e8f0e9!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:2px!important;
+    padding:4px!important;
+    font-size:11px!important;
+  }
+
+  .mobile-bottom-nav-v883 button:first-child{
+    background:linear-gradient(180deg,rgba(241,199,74,.22),rgba(241,199,74,.07))!important;
+    box-shadow:inset 0 0 16px rgba(241,199,74,.15)!important;
+  }
+
+  .mobile-bottom-nav-v883 button span{
+    color:var(--m883-gold)!important;
+    font-size:21px!important;
+    line-height:1!important;
+  }
+
+  .mobile-bottom-nav-v883 button b{
+    color:#f7f1d7!important;
+    font-size:11px!important;
+  }
+
+  /* ===== 漢堡快速選單 ===== */
+  .mobile-quick-menu-v883{
+    display:flex;
+    position:fixed!important;
+    right:12px!important;
+    top:72px!important;
+    width:190px!important;
+    z-index:160!important;
+    flex-direction:column!important;
+    gap:7px!important;
+    padding:10px!important;
+    border-radius:14px!important;
+    background:#0a2a22!important;
+    border:1px solid #43816a!important;
+    box-shadow:0 10px 28px rgba(0,0,0,.42)!important;
+  }
+
+  .mobile-quick-menu-v883.hidden{display:none!important}
+
+  .mobile-quick-menu-v883 button{
+    width:100%!important;
+    min-height:42px!important;
+    background:#153b30!important;
+    color:#fff3d6!important;
+    border:1px solid #3d755f!important;
+    border-radius:9px!important;
+    text-align:left!important;
+    padding:8px 10px!important;
+  }
+
+  /* ===== Modal 延續手機視覺 ===== */
+  body.reference-canvas-v594 #modal .modal-box{
+    background:#0b2c24!important;
+    border:1px solid #3e7d64!important;
+    box-shadow:0 -10px 35px rgba(0,0,0,.48)!important;
+  }
+
+  body.reference-canvas-v594 #modal #modalContent{
+    background:#0b2c24!important;
+    color:#f1f4e8!important;
+  }
+
+  body.reference-canvas-v594 #modal #modalContent h2,
+  body.reference-canvas-v594 #modal #modalContent h3{
+    color:#fff6d9!important;
+  }
+
+  body.reference-canvas-v594 #modal #modalContent button{
+    background:#173c31!important;
+    color:#fff4db!important;
+    border-color:#477c68!important;
+  }
+}
+
+@media screen and (max-width:480px){
+  body.reference-canvas-v594 #stats{
+    grid-template-columns:1fr!important;
+  }
+
+  body.reference-canvas-v594 #stats .stat,
+  body.reference-canvas-v594 #stats .stat:nth-child(-n+5),
+  body.reference-canvas-v594 #stats .stat:nth-child(n+6){
+    grid-column:1!important;
+    grid-row:auto!important;
+  }
+
+  body.reference-canvas-v594 #menu .menu-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}

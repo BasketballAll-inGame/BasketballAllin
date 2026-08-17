@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <title>關於籃球人生</title>
-<link rel="stylesheet" href="style.css?v=8.8.2">
+<link rel="stylesheet" href="style.css?v=8.8.3">
 </head>
 <body class="layout-v590 reference-canvas-v594">
 <div id="app">
@@ -17,6 +17,7 @@
       <button id="styleBtn"><span class="top-icon">🎨</span> 面板風格</button>
       <button id="restartBtn" class="danger"><span class="top-icon">↻</span> 重新開始</button>
     </div>
+    <button id="mobileMenuBtnV883" class="mobile-menu-btn-v883" type="button" aria-label="手機選單">☰</button>
   </header>
 
   <main class="layout screenshot-layout">
@@ -66,6 +67,20 @@
       </section>
     </aside>
 </main>
+
+  <nav id="mobileBottomNavV883" class="mobile-bottom-nav-v883" aria-label="手機快捷導覽">
+    <button type="button" data-mobile-target-v883="profile"><span>⌂</span><b>首頁</b></button>
+    <button type="button" data-mobile-target-v883="stats"><span>▥</span><b>能力</b></button>
+    <button type="button" data-mobile-target-v883="menu"><span>🏀</span><b>操作</b></button>
+    <button type="button" data-mobile-target-v883="teammateInline"><span>👥</span><b>隊友</b></button>
+    <button type="button" data-mobile-target-v883="history"><span>★</span><b>紀錄</b></button>
+  </nav>
+
+  <div id="mobileQuickMenuV883" class="mobile-quick-menu-v883 hidden">
+    <button type="button" id="mobileStyleV883">🎨 面板風格</button>
+    <button type="button" id="mobileRestartV883">↻ 重新開始</button>
+    <button type="button" id="mobileCloseV883">關閉</button>
+  </div>
 </div>
 
 <div id="modal" class="modal hidden">
@@ -75,6 +90,6 @@
   </div>
 </div>
 
-<script src="game.js?v=8.8.2"></script>
+<script src="game.js?v=8.8.3"></script>
 </body>
 </html>
