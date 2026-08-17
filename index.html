@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>關於籃球人生</title>
+<link rel="stylesheet" href="style.css?v=8.7.9">
+</head>
+<body class="layout-v590 reference-canvas-v594">
+<div id="app">
+  <header class="topbar">
+    <div>
+      <div class="brand">🏀 關於籃球人生</div>
+      <div id="seasonLabel" class="muted"></div>
+    </div>
+    <div class="top-actions">
+      <button id="styleBtn"><span class="top-icon">🎨</span> 面板風格</button>
+      <button id="restartBtn" class="danger"><span class="top-icon">↻</span> 重新開始</button>
+    </div>
+  </header>
+
+  <main class="layout screenshot-layout">
+    <aside class="side">
+      <section class="card profile">
+        <h3>個人信息</h3>
+        <div id="profile"></div>
+      </section>
+      <section class="card">
+        <h3>能力值</h3>
+        <div id="stats"></div>
+      </section>
+      <section class="card mini">
+        <div>受傷機率 <b id="injury"></b></div>
+        <div>本年剩餘動作 <b id="actions"></b>/5</div>
+      </section>
+    </aside>
+
+    <section class="center">
+      
+
+      <section class="card result-section">
+        <div class="result-heading">
+          <h3>本年事件 / 結果</h3>
+          <div id="seasonInfo" class="season-chip"></div>
+        </div>
+        <div id="log" class="log"></div>
+      </section>
+
+      <section class="card teammate-inline-section">
+        <div class="result-heading">
+          <h3>隊友資訊</h3>
+          <div id="teamAverageInfo" class="season-chip roster-summary-chip"></div>
+        </div>
+        <div id="teammateInline"></div>
+      </section>
+    </section>
+
+    <aside class="right">
+      <section class="card">
+        <h3>面板</h3>
+        <div id="menu"></div>
+      </section>
+      <section class="card">
+        <h3>人生紀錄</h3>
+        <div id="history" class="history"></div>
+      </section>
+    </aside>
+</main>
+</div>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-box">
+    <button class="close" id="modalClose">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script src="game.js?v=8.7.9"></script>
+</body>
+</html>
