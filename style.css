@@ -7063,3 +7063,31 @@ html body #modalContent button.agent-choice-v879 b {
     font-size:12px!important;
   }
 }
+
+
+/* =========================================================
+   V8.8.7 創角前隱藏手機底部導覽
+   ========================================================= */
+@media screen and (max-width:900px){
+  body.mobile-precreate-v887 .mobile-bottom-nav-v883{
+    display:none!important;
+  }
+
+  body.mobile-precreate-v887{
+    padding-bottom:0!important;
+  }
+
+  body.mobile-precreate-v887 .layout.screenshot-layout{
+    padding-bottom:16px!important;
+  }
+
+  /* 創角視窗不要被底部導覽遮住 */
+  body.mobile-precreate-v887 #modal .modal-box,
+  body.mobile-precreate-v887 #modal #modalContent{
+    max-height:96vh!important;
+  }
+
+  body.mobile-precreate-v887 #modal #modalContent{
+    padding-bottom:24px!important;
+  }
+}
