@@ -8467,3 +8467,82 @@ html body #modalContent button.agent-choice-v879 b {
     z-index:20000!important;
   }
 }
+
+
+/* =========================================================
+   V8.9.7 創角畫面精準修正
+   判斷依據不再使用 G.name，而是 modal 內真正的 startBtn。
+   ========================================================= */
+@media screen and (max-width:900px){
+
+  body.creating-player-v897 .mobile-bottom-nav-v883,
+  body.creating-player-v897 #mobileBottomNavV883{
+    display:none!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+
+  body.creating-player-v897{
+    padding-bottom:0!important;
+  }
+
+  body.creating-player-v897 .layout.screenshot-layout{
+    padding-bottom:12px!important;
+  }
+
+  /* 創角視窗完整吃滿手機高度，底部按鈕可滑到 */
+  body.creating-player-v897 #modal.modal{
+    position:fixed!important;
+    inset:0!important;
+    z-index:30000!important;
+    padding:0!important;
+    overflow:hidden!important;
+    display:flex!important;
+    align-items:stretch!important;
+    justify-content:center!important;
+  }
+
+  body.creating-player-v897 #modal .modal-box{
+    width:100%!important;
+    max-width:100%!important;
+    height:100dvh!important;
+    min-height:100dvh!important;
+    max-height:100dvh!important;
+    margin:0!important;
+    border-radius:0!important;
+    overflow:hidden!important;
+    display:flex!important;
+    flex-direction:column!important;
+  }
+
+  body.creating-player-v897 #modal #modalContent{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    height:auto!important;
+    max-height:none!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    padding:18px 18px calc(40px + env(safe-area-inset-bottom))!important;
+    scroll-padding-bottom:60px!important;
+  }
+
+  body.creating-player-v897 #modal #startBtn{
+    display:block!important;
+    width:100%!important;
+    min-height:52px!important;
+    margin:8px 0 18px!important;
+    position:static!important;
+  }
+}
+
+/* Chrome/Edge 額外保險：只要創角按鈕存在且 modal 開著，就隱藏底部列 */
+@media screen and (max-width:900px){
+  body:has(#modal:not(.hidden) #startBtn) #mobileBottomNavV883{
+    display:none!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+}

@@ -80,7 +80,7 @@ const MASCOTS=["獵鷹","暴風","海狼","黑熊","猛虎","雷霆","巨鯊","�
 let G=null;
 
 
-/* V8.9.6：獎項顯示年份，例如「2026 新人王」 */
+/* V8.9.7：獎項顯示年份，例如「2026 新人王」 */
 function awardLabelV856(award, year){
   const y = Number(year || G.year || new Date().getFullYear());
   const text = String(award || "").trim();
@@ -631,7 +631,7 @@ function coachPoachV54(){
   return coachJobMarketV587();
 }
 
-function markSaveVersionV60(){if(G)G.saveVersion="8.9.6";}
+function markSaveVersionV60(){if(G)G.saveVersion="8.9.7";}
 function normalize(){
  if(!G.logs)G.logs=[];if(!G.history)G.history=[];if(!G.awards)G.awards=[];if(!G.hof)G.hof=[];if(!G.seasons)G.seasons=[];
  if(G.careerEnded==null)G.careerEnded=false;if(!G.max)G.max={};if(!G.breakthrough)G.breakthrough={};
@@ -789,7 +789,7 @@ function renderFeed(x){
 }
 function initPlayer(d){
  G={name:d.name,nationality:d.nationality||"台灣",height:+d.height,weight:+d.weight,number:+d.number,hand:d.hand,pos1:d.pos1,pos2:d.pos2,phase:"高中",hblDivision:null,year:1,startYear:d.startYear||2026,absoluteAge:16,absoluteCalendarYear:d.startYear||2026,actions:0,injury:0,leagueUsed:false,storyCount:0,logs:[],history:[],awards:[],hof:[],seasons:[],stats:{},max:{},breakthrough:{},school:pick(schools),team:null,theme:"theme-sport",careerEnded:false,proKey:null,proLeague:null,wealthTWD:0,coachSalaryTWD:null,careerMetrics:{teamChanges:0,nbaTrades:0,signedMoves:0,injuryEvents:0,healthySeasons:0,playoffSeasons:0,titles:0,breakthroughWins:0,breakthroughFails:0},teamStints:{},rosters:{}};
- // V8.9.6：五項基礎能力各自隨機 50～70，且平均至少 60。
+ // V8.9.7：五項基礎能力各自隨機 50～70，且平均至少 60。
  // 不再額外贈送 10 點初始配點。
  let initialBaseStats={};
  let initialBaseAvg=0;
@@ -1016,7 +1016,7 @@ function modernDashboardV7(){
 }
 
 
-/* ===== V8.9.6 隨機劇情引擎 ===== */
+/* ===== V8.9.7 隨機劇情引擎 ===== */
 const STORY_POOLS_V857={
  modern:[
   {title:"更衣室風波",icon:"🏀",text:"球隊近期戰績不穩，一名隊友受訪時暗示「有人太在意個人數據」。媒體開始猜測他是在影射你。",
@@ -2253,7 +2253,7 @@ function render(){
  if(!G.max)G.max={};
  ALL.forEach(k=>{if(!Number.isFinite(G.max[k]))G.max[k]=100;});normalize();
  document.body.className=`layout-v590 reference-canvas-v594 ${G.theme||"theme-sport"}`;
- // V8.9.6：render 主流程只做安全的 data-theme 同步，避免主題函式錯誤中斷整個遊戲資料渲染。
+ // V8.9.7：render 主流程只做安全的 data-theme 同步，避免主題函式錯誤中斷整個遊戲資料渲染。
  const themeMapV862={"theme-sport":"court","theme-court":"wood","theme-neon":"neon","theme-paper":"paper"};
  const safeThemeV862=themeMapV862[G.theme||"theme-sport"]||"court";
  document.body.setAttribute("data-theme",safeThemeV862);
@@ -2939,7 +2939,7 @@ function renderMenu(){
    ];
  }
 
- // V8.9.6：手機版不再產生舊操作按鈕。
+ // V8.9.7：手機版不再產生舊操作按鈕。
  // 直接保存原功能函式給底部「操作」視窗使用。
  if(window.matchMedia && window.matchMedia("(max-width:900px)").matches){
    window.mobileMenuItemsV894=items;
@@ -2991,11 +2991,28 @@ function renderMenu(){
    }
  });
 }
-function modal(h){$("modalContent").innerHTML=h;$("modal").classList.remove("hidden")}
+function modal(h){
+ $("modalContent").innerHTML=h;
+ $("modal").classList.remove("hidden");
+ if(String(h).includes('id="startBtn"')){
+   document.body.classList.add("creating-player-v897");
+ }else{
+   document.body.classList.remove("creating-player-v897");
+ }
+}
 function closeModal(){$("modal").classList.add("hidden")}
 $("modalClose").onclick=closeModal;
 function setup(){modal(`<h2>建立你的籃球人生</h2><p class="muted">基礎能力隨機50～70，各項數值不固定；五項基礎能力平均至少60。初始身高最高210公分；高中到大學期間每年有不固定的成長機會。</p><div class="form-grid"><label class="field">姓名<input id="fName" maxlength="16" value="新秀"></label>
- <label class="field">國籍<select id="fNationality"><option>台灣</option><option>美國</option><option>中國</option><option>日本</option><option>韓國</option></select></label><label class="field">遊戲起始年份<input id="fStartYear" type="number" min="1950" max="2100" value="2026"></label><label class="field">初始身高 160～210<input id="fHeight" type="number" min="160" max="210" value="190"></label><label class="field">體重 60～150<input id="fWeight" type="number" min="60" max="150" value="85"></label><label class="field">球衣背號<input id="fNum" type="number" min="0" max="99" value="23"></label><label class="field">慣用手<select id="fHand"><option>右手</option><option>左手</option></select></label><label class="field">希望位置1<select id="fPos1">${POS.map(p=>`<option value="${p}">${POSNAME[p]}</option>`).join("")}</select></label><label class="field">希望位置2<select id="fPos2">${POS.map(p=>`<option value="${p}" ${p==="PF"?"selected":""}>${POSNAME[p]}</option>`).join("")}</select></label></div><br><button id="startBtn">開始籃球人生</button>`);$("startBtn").onclick=()=>{let d={name:$("fName").value.trim()||"新秀",nationality:$("fNationality").value,startYear:+$("fStartYear").value||2026,height:+$("fHeight").value,weight:+$("fWeight").value,number:+$("fNum").value,hand:$("fHand").value,pos1:$("fPos1").value,pos2:$("fPos2").value};if(d.pos1===d.pos2)return alert("兩個位置不可相同。");if(d.height<160||d.height>210||d.weight<60||d.weight>150)return alert("初始身高必須在160～210公分，體重必須在60～150公斤。");initPlayer(d);save();render();closeModal();document.body.classList.remove("mobile-precreate-v887");window.scrollTo({top:0,behavior:"auto"})}}
+ <label class="field">國籍<select id="fNationality"><option>台灣</option><option>美國</option><option>中國</option><option>日本</option><option>韓國</option></select></label><label class="field">遊戲起始年份<input id="fStartYear" type="number" min="1950" max="2100" value="2026"></label><label class="field">初始身高 160～210<input id="fHeight" type="number" min="160" max="210" value="190"></label><label class="field">體重 60～150<input id="fWeight" type="number" min="60" max="150" value="85"></label><label class="field">球衣背號<input id="fNum" type="number" min="0" max="99" value="23"></label><label class="field">慣用手<select id="fHand"><option>右手</option><option>左手</option></select></label><label class="field">希望位置1<select id="fPos1">${POS.map(p=>`<option value="${p}">${POSNAME[p]}</option>`).join("")}</select></label><label class="field">希望位置2<select id="fPos2">${POS.map(p=>`<option value="${p}" ${p==="PF"?"selected":""}>${POSNAME[p]}</option>`).join("")}</select></label></div><br><button id="startBtn">開始籃球人生</button>`);$("startBtn").onclick=()=>{let d={name:$("fName").value.trim()||"新秀",nationality:$("fNationality").value,startYear:+$("fStartYear").value||2026,height:+$("fHeight").value,weight:+$("fWeight").value,number:+$("fNum").value,hand:$("fHand").value,pos1:$("fPos1").value,pos2:$("fPos2").value};if(d.pos1===d.pos2)return alert("兩個位置不可相同。");if(d.height<160||d.height>210||d.weight<60||d.weight>150)return alert("初始身高必須在160～210公分，體重必須在60～150公斤。");initPlayer(d);save();render();closeModal();
+document.body.classList.remove("mobile-precreate-v887","creating-player-v897");
+const mobileNavV897=document.getElementById("mobileBottomNavV883");
+if(mobileNavV897){
+  mobileNavV897.style.removeProperty("display");
+  mobileNavV897.style.removeProperty("visibility");
+  mobileNavV897.style.removeProperty("opacity");
+  mobileNavV897.style.removeProperty("pointer-events");
+}
+window.scrollTo({top:0,behavior:"auto"})}}
 function actionDone(consumeAction=false){
   // V8.5.2：只有「訓練」與「休息」會消耗年度動作次數。
   // 其他操作仍會存檔與更新畫面，但不會減少剩餘動作。
@@ -4444,7 +4461,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 
 
-/* V8.9.6：完整主題套用與即時重繪 */
+/* V8.9.7：完整主題套用與即時重繪 */
 function applyFullThemeV859(theme){
   try{
     const allowed=["court","wood","neon","paper"];
@@ -4488,7 +4505,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.6 手機導覽 ================= */
+/* ================= V8.9.7 手機導覽 ================= */
 (function mobileUiV883(){
   function isMobile(){return window.matchMedia && window.matchMedia("(max-width:900px)").matches}
 
@@ -4539,11 +4556,11 @@ document.addEventListener("click",(e)=>{
   });
 })();
 
-/* V8.9.6 手機底部導覽固定與選取狀態 */
+/* V8.9.7 手機底部導覽固定與選取狀態 */
 (function(){document.addEventListener('click',function(e){const btn=e.target.closest('[data-mobile-target-v883]');if(!btn)return;document.querySelectorAll('[data-mobile-target-v883]').forEach(x=>x.classList.remove('active'));btn.classList.add('active');});})();
 
 
-/* ================= V8.9.6 創角前手機導覽隱藏 ================= */
+/* ================= V8.9.7 創角前手機導覽隱藏 ================= */
 (function mobilePreCreateStateV887(){
   function sync(){
     try{
@@ -4589,7 +4606,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.6 手機重疊安全檢查 ================= */
+/* ================= V8.9.7 手機重疊安全檢查 ================= */
 (function mobileOverlapGuardV889(){
   function sync(){
     if(!document.body)return;
@@ -4617,7 +4634,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.6 手機操作中心 ================= */
+/* ================= V8.9.7 手機操作中心 ================= */
 (function mobileActionCenterV891(){
   function isMobileV891(){
     return !!(window.matchMedia && window.matchMedia("(max-width:900px)").matches);
@@ -4769,7 +4786,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.6 手機獨立操作 Overlay ================= */
+/* ================= V8.9.7 手機獨立操作 Overlay ================= */
 (function mobileActionOverlayV892(){
   const isMobile=()=>window.matchMedia && window.matchMedia("(max-width:900px)").matches;
 
@@ -4952,7 +4969,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.6 原操作面板強制隱藏 ================= */
+/* ================= V8.9.7 原操作面板強制隱藏 ================= */
 (function mobileMenuHardFixV893(){
   function apply(){
     if(!(window.matchMedia && window.matchMedia("(max-width:900px)").matches)) return;
@@ -4983,7 +5000,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.6 手機操作中心（直接呼叫功能） ================= */
+/* ================= V8.9.7 手機操作中心（直接呼叫功能） ================= */
 (function mobileActionCenterV894(){
   const isMobile=()=>window.matchMedia && window.matchMedia("(max-width:900px)").matches;
 
@@ -5154,7 +5171,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.6 手機下半部顯示保險 ================= */
+/* ================= V8.9.7 手機下半部顯示保險 ================= */
 (function mobileLowerSectionsV895(){
   function sync(){
     if(!(window.matchMedia && window.matchMedia("(max-width:900px)").matches))return;
@@ -5206,7 +5223,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.6 手機下半部順序保險 ================= */
+/* ================= V8.9.7 手機下半部順序保險 ================= */
 (function mobileSectionOrderV896(){
   function sync(){
     if(!(window.matchMedia && window.matchMedia("(max-width:900px)").matches))return;
@@ -5258,5 +5275,48 @@ document.addEventListener("click",(e)=>{
   const mo=new MutationObserver(sync);
   document.addEventListener("DOMContentLoaded",()=>{
     mo.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:["class","style"]});
+  });
+})();
+
+
+/* ================= V8.9.7 創角底部列強制同步 ================= */
+(function precreateNavExactV897(){
+  function sync(){
+    if(!(window.matchMedia && window.matchMedia("(max-width:900px)").matches))return;
+
+    const modal=document.getElementById("modal");
+    const startBtn=document.getElementById("startBtn");
+    const creating=!!(modal && !modal.classList.contains("hidden") && startBtn);
+    const nav=document.getElementById("mobileBottomNavV883");
+
+    document.body.classList.toggle("creating-player-v897",creating);
+
+    if(nav){
+      if(creating){
+        nav.style.setProperty("display","none","important");
+        nav.style.setProperty("visibility","hidden","important");
+        nav.style.setProperty("opacity","0","important");
+        nav.style.setProperty("pointer-events","none","important");
+      }else{
+        nav.style.removeProperty("display");
+        nav.style.removeProperty("visibility");
+        nav.style.removeProperty("opacity");
+        nav.style.removeProperty("pointer-events");
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded",sync);
+  window.addEventListener("load",sync);
+  window.addEventListener("resize",sync,{passive:true});
+
+  document.addEventListener("DOMContentLoaded",()=>{
+    const observer=new MutationObserver(sync);
+    observer.observe(document.body,{
+      subtree:true,
+      childList:true,
+      attributes:true,
+      attributeFilter:["class","style"]
+    });
   });
 })();
