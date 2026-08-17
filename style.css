@@ -7613,3 +7613,11 @@ html body #modalContent button.agent-choice-v879 b {
     gap:8px!important;
   }
 }
+
+
+/* V8.9.0：建立角色完成後，hidden modal 絕不佔畫面 */
+#modal.hidden{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
