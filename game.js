@@ -80,7 +80,7 @@ const MASCOTS=["獵鷹","暴風","海狼","黑熊","猛虎","雷霆","巨鯊","�
 let G=null;
 
 
-/* V8.9.1：獎項顯示年份，例如「2026 新人王」 */
+/* V8.9.2：獎項顯示年份，例如「2026 新人王」 */
 function awardLabelV856(award, year){
   const y = Number(year || G.year || new Date().getFullYear());
   const text = String(award || "").trim();
@@ -631,7 +631,7 @@ function coachPoachV54(){
   return coachJobMarketV587();
 }
 
-function markSaveVersionV60(){if(G)G.saveVersion="8.9.1";}
+function markSaveVersionV60(){if(G)G.saveVersion="8.9.2";}
 function normalize(){
  if(!G.logs)G.logs=[];if(!G.history)G.history=[];if(!G.awards)G.awards=[];if(!G.hof)G.hof=[];if(!G.seasons)G.seasons=[];
  if(G.careerEnded==null)G.careerEnded=false;if(!G.max)G.max={};if(!G.breakthrough)G.breakthrough={};
@@ -789,7 +789,7 @@ function renderFeed(x){
 }
 function initPlayer(d){
  G={name:d.name,nationality:d.nationality||"台灣",height:+d.height,weight:+d.weight,number:+d.number,hand:d.hand,pos1:d.pos1,pos2:d.pos2,phase:"高中",hblDivision:null,year:1,startYear:d.startYear||2026,absoluteAge:16,absoluteCalendarYear:d.startYear||2026,actions:0,injury:0,leagueUsed:false,storyCount:0,logs:[],history:[],awards:[],hof:[],seasons:[],stats:{},max:{},breakthrough:{},school:pick(schools),team:null,theme:"theme-sport",careerEnded:false,proKey:null,proLeague:null,wealthTWD:0,coachSalaryTWD:null,careerMetrics:{teamChanges:0,nbaTrades:0,signedMoves:0,injuryEvents:0,healthySeasons:0,playoffSeasons:0,titles:0,breakthroughWins:0,breakthroughFails:0},teamStints:{},rosters:{}};
- // V8.9.1：五項基礎能力各自隨機 50～70，且平均至少 60。
+ // V8.9.2：五項基礎能力各自隨機 50～70，且平均至少 60。
  // 不再額外贈送 10 點初始配點。
  let initialBaseStats={};
  let initialBaseAvg=0;
@@ -1016,7 +1016,7 @@ function modernDashboardV7(){
 }
 
 
-/* ===== V8.9.1 隨機劇情引擎 ===== */
+/* ===== V8.9.2 隨機劇情引擎 ===== */
 const STORY_POOLS_V857={
  modern:[
   {title:"更衣室風波",icon:"🏀",text:"球隊近期戰績不穩，一名隊友受訪時暗示「有人太在意個人數據」。媒體開始猜測他是在影射你。",
@@ -2253,7 +2253,7 @@ function render(){
  if(!G.max)G.max={};
  ALL.forEach(k=>{if(!Number.isFinite(G.max[k]))G.max[k]=100;});normalize();
  document.body.className=`layout-v590 reference-canvas-v594 ${G.theme||"theme-sport"}`;
- // V8.9.1：render 主流程只做安全的 data-theme 同步，避免主題函式錯誤中斷整個遊戲資料渲染。
+ // V8.9.2：render 主流程只做安全的 data-theme 同步，避免主題函式錯誤中斷整個遊戲資料渲染。
  const themeMapV862={"theme-sport":"court","theme-court":"wood","theme-neon":"neon","theme-paper":"paper"};
  const safeThemeV862=themeMapV862[G.theme||"theme-sport"]||"court";
  document.body.setAttribute("data-theme",safeThemeV862);
@@ -4420,7 +4420,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 
 
-/* V8.9.1：完整主題套用與即時重繪 */
+/* V8.9.2：完整主題套用與即時重繪 */
 function applyFullThemeV859(theme){
   try{
     const allowed=["court","wood","neon","paper"];
@@ -4464,7 +4464,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.1 手機導覽 ================= */
+/* ================= V8.9.2 手機導覽 ================= */
 (function mobileUiV883(){
   function isMobile(){return window.matchMedia && window.matchMedia("(max-width:900px)").matches}
 
@@ -4515,11 +4515,11 @@ document.addEventListener("click",(e)=>{
   });
 })();
 
-/* V8.9.1 手機底部導覽固定與選取狀態 */
+/* V8.9.2 手機底部導覽固定與選取狀態 */
 (function(){document.addEventListener('click',function(e){const btn=e.target.closest('[data-mobile-target-v883]');if(!btn)return;document.querySelectorAll('[data-mobile-target-v883]').forEach(x=>x.classList.remove('active'));btn.classList.add('active');});})();
 
 
-/* ================= V8.9.1 創角前手機導覽隱藏 ================= */
+/* ================= V8.9.2 創角前手機導覽隱藏 ================= */
 (function mobilePreCreateStateV887(){
   function sync(){
     try{
@@ -4565,7 +4565,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.1 手機重疊安全檢查 ================= */
+/* ================= V8.9.2 手機重疊安全檢查 ================= */
 (function mobileOverlapGuardV889(){
   function sync(){
     if(!document.body)return;
@@ -4593,7 +4593,7 @@ document.addEventListener("click",(e)=>{
 })();
 
 
-/* ================= V8.9.1 手機操作中心 ================= */
+/* ================= V8.9.2 手機操作中心 ================= */
 (function mobileActionCenterV891(){
   function isMobileV891(){
     return !!(window.matchMedia && window.matchMedia("(max-width:900px)").matches);
@@ -4742,4 +4742,187 @@ document.addEventListener("click",(e)=>{
       if(m)m.classList.remove("mobile-action-open-v891");
     }
   },true);
+})();
+
+
+/* ================= V8.9.2 手機獨立操作 Overlay ================= */
+(function mobileActionOverlayV892(){
+  const isMobile=()=>window.matchMedia && window.matchMedia("(max-width:900px)").matches;
+
+  function markOriginalMenuCard(){
+    const menu=document.getElementById("menu");
+    if(!menu)return;
+    const card=menu.closest(".card");
+    if(card)card.classList.add("mobile-original-menu-card-v892");
+  }
+
+  function currentButtons(){
+    const menu=document.getElementById("menu");
+    if(!menu)return [];
+    return [...menu.querySelectorAll("button[data-menu],button[data-endmenu]")].map(btn=>({
+      source:btn,
+      label:(btn.querySelector("span")?.textContent||btn.textContent||"功能").trim(),
+      disabled:!!btn.disabled
+    }));
+  }
+
+  function description(label){
+    if(/訓練/.test(label))return "提升球員能力與狀態";
+    if(/^休息$/.test(label))return "恢復體力並調整狀態";
+    if(/聯賽開始|賽季開始/.test(label))return "開始本年度正式賽事";
+    if(label==="位置")return "調整球員位置與角色";
+    if(/轉校/.test(label))return "查看其他學校與轉校選項";
+    if(/交易/.test(label))return "查看交易與球員流動";
+    if(/陣容/.test(label))return "管理先發、板凳與輪替";
+    if(/戰術/.test(label))return "調整球隊進攻與防守策略";
+    if(/球員/.test(label))return "查看與管理球員";
+    if(/補強/.test(label))return "尋找可加入球隊的球員";
+    return "查看相關功能與選項";
+  }
+
+  function icon(label){
+    try{
+      if(typeof uiIconV593==="function" && typeof menuIconNameV593==="function"){
+        return uiIconV593(menuIconNameV593(label));
+      }
+    }catch(e){}
+    if(/訓練/.test(label))return "🏋";
+    if(/聯賽|賽季/.test(label))return "🏆";
+    if(label==="位置")return "🎯";
+    if(/轉校|交易/.test(label))return "📋";
+    return "●";
+  }
+
+  function openOverlay(html){
+    const ov=document.getElementById("mobileActionOverlayV892");
+    const ct=document.getElementById("mobileActionContentV892");
+    if(!ov||!ct)return;
+    ct.innerHTML=html;
+    ov.classList.remove("hidden");
+    ov.setAttribute("aria-hidden","false");
+    document.body.classList.add("mobile-action-open-v892");
+  }
+
+  function closeOverlay(){
+    const ov=document.getElementById("mobileActionOverlayV892");
+    if(ov){
+      ov.classList.add("hidden");
+      ov.setAttribute("aria-hidden","true");
+    }
+    document.body.classList.remove("mobile-action-open-v892");
+  }
+
+  function invoke(item){
+    if(!item||!item.source||item.disabled)return;
+    closeOverlay();
+    setTimeout(()=>item.source.click(),20);
+  }
+
+  function row(item,index,attr){
+    return `<button type="button" class="mobile-action-item-v892" ${attr}="${index}" ${item.disabled?"disabled":""}>
+      <span class="mobile-action-icon-v892">${icon(item.label)}</span>
+      <span class="mobile-action-copy-v892"><b>${item.label}</b><small>${description(item.label)}</small></span>
+      <span class="mobile-action-arrow-v892">›</span>
+    </button>`;
+  }
+
+  window.openMobileMoreActionsV892=function(){
+    markOriginalMenuCard();
+    const all=currentButtons();
+    const core=/^(訓練|聯賽開始|賽季開始|位置|轉校|交易)$/;
+    const rest=all.filter(x=>!core.test(x.label));
+
+    openOverlay(`<div class="mobile-action-head-v892"><span>🏀</span><span>更多功能</span></div>
+      <button type="button" class="mobile-action-back-v892" id="mobileActionBackV892">‹ 返回操作選項</button>
+      <div class="mobile-action-list-v892">${rest.map((x,i)=>row(x,i,"data-mobile-more-v892")).join("")}</div>`);
+
+    document.getElementById("mobileActionBackV892").onclick=openMobileActionPanelV892;
+    document.querySelectorAll("[data-mobile-more-v892]").forEach(b=>{
+      b.onclick=()=>invoke(rest[+b.dataset.mobileMoreV892]);
+    });
+  };
+
+  window.openMobileActionPanelV892=function(){
+    if(!isMobile())return;
+    markOriginalMenuCard();
+    const all=currentButtons();
+    if(!all.length)return;
+
+    const find=re=>all.find(x=>re.test(x.label));
+    const training=find(/^訓練$/);
+    const league=find(/^(聯賽開始|賽季開始)$/);
+    const position=find(/^位置$/);
+    const move=find(/^(轉校|交易)$/);
+
+    const core=[];
+    if(training)core.push(training);
+    core.push({label:"更多功能",disabled:false,isMore:true});
+    if(league)core.push(league);
+    if(position)core.push(position);
+    if(move)core.push(move);
+
+    if(core.filter(x=>!x.isMore).length<3){
+      const used=new Set(core.filter(x=>x.source).map(x=>x.source));
+      all.filter(x=>!used.has(x.source) && !/^休息$/.test(x.label)).slice(0,4).forEach(x=>core.push(x));
+    }
+
+    openOverlay(`<div class="mobile-action-head-v892"><span>🏀</span><span>操作選項</span></div>
+      <div class="mobile-action-list-v892">
+        ${core.map((x,i)=>x.isMore
+          ? `<button type="button" class="mobile-action-item-v892" id="mobileMoreV892">
+               <span class="mobile-action-icon-v892">▶</span>
+               <span class="mobile-action-copy-v892"><b>更多功能</b><small>休息、生活、財富、世界與其他功能</small></span>
+               <span class="mobile-action-arrow-v892">›</span>
+             </button>`
+          : row(x,i,"data-mobile-core-v892")).join("")}
+      </div>`);
+
+    const more=document.getElementById("mobileMoreV892");
+    if(more)more.onclick=openMobileMoreActionsV892;
+
+    document.querySelectorAll("[data-mobile-core-v892]").forEach(b=>{
+      b.onclick=()=>invoke(core[+b.dataset.mobileCoreV892]);
+    });
+  };
+
+  document.addEventListener("click",function(e){
+    if(!isMobile())return;
+
+    const nav=e.target.closest('[data-mobile-target-v883="menu"]');
+    if(nav){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      document.querySelectorAll("[data-mobile-target-v883]").forEach(x=>x.classList.remove("active"));
+      nav.classList.add("active");
+      openMobileActionPanelV892();
+      return;
+    }
+
+    if(e.target.closest("#mobileActionCloseV892")){
+      closeOverlay();
+      return;
+    }
+
+    const ov=e.target.closest("#mobileActionOverlayV892");
+    if(ov && e.target===ov)closeOverlay();
+  },true);
+
+  document.addEventListener("DOMContentLoaded",()=>{
+    markOriginalMenuCard();
+    const menu=document.getElementById("menu");
+    if(menu){
+      const mo=new MutationObserver(markOriginalMenuCard);
+      mo.observe(menu,{childList:true,subtree:true});
+    }
+  });
+
+  // render 後也補標記一次
+  const oldRender=window.render;
+  if(typeof oldRender==="function"){
+    window.render=function(){
+      const r=oldRender.apply(this,arguments);
+      markOriginalMenuCard();
+      return r;
+    };
+  }
 })();
