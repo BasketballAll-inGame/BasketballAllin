@@ -6169,3 +6169,114 @@ html body #modalContent button.agent-choice-v879 b {
     font-size:18px!important;
   }
 }
+
+/* V8.8.2 mobile: disable the old fixed 1536x1024 reference canvas */
+@media screen and (max-width:900px){
+  html{
+    width:100%!important;height:auto!important;min-height:100%!important;
+    overflow-x:hidden!important;overflow-y:auto!important;
+  }
+
+  body.reference-canvas-v594{
+    position:static!important;
+    left:auto!important;top:auto!important;
+    width:100%!important;min-width:0!important;max-width:100%!important;
+    height:auto!important;min-height:100vh!important;max-height:none!important;
+    margin:0!important;padding:0!important;
+    overflow-x:hidden!important;overflow-y:auto!important;
+    transform:none!important;transform-origin:initial!important;
+  }
+
+  body.reference-canvas-v594 .topbar{
+    position:sticky!important;left:auto!important;top:0!important;
+    width:100%!important;min-width:0!important;max-width:100%!important;
+    height:auto!important;min-height:58px!important;
+    padding:9px 12px!important;box-sizing:border-box!important;
+    z-index:100!important;
+  }
+
+  body.reference-canvas-v594 .layout.screenshot-layout{
+    position:static!important;left:auto!important;top:auto!important;
+    width:100%!important;min-width:0!important;max-width:100%!important;
+    height:auto!important;min-height:0!important;max-height:none!important;
+    margin:0!important;padding:10px!important;box-sizing:border-box!important;
+    display:flex!important;flex-direction:column!important;
+    grid-template-columns:none!important;grid-template-rows:none!important;
+    gap:10px!important;overflow:visible!important;
+  }
+
+  body.reference-canvas-v594 .side,
+  body.reference-canvas-v594 .center,
+  body.reference-canvas-v594 .right{
+    position:static!important;
+    width:100%!important;min-width:0!important;max-width:100%!important;
+    height:auto!important;min-height:0!important;max-height:none!important;
+    display:flex!important;flex-direction:column!important;
+    gap:10px!important;overflow:visible!important;margin:0!important;
+  }
+
+  body.reference-canvas-v594 .side > .card,
+  body.reference-canvas-v594 .side > .mini,
+  body.reference-canvas-v594 .center > .card,
+  body.reference-canvas-v594 .right > .card,
+  body.reference-canvas-v594 .result-section,
+  body.reference-canvas-v594 .teammate-inline-section{
+    position:static!important;left:auto!important;top:auto!important;
+    width:100%!important;min-width:0!important;max-width:100%!important;
+    height:auto!important;min-height:0!important;max-height:none!important;
+    margin:0!important;box-sizing:border-box!important;overflow:visible!important;
+  }
+
+  body.reference-canvas-v594 #log.log{
+    min-height:150px!important;height:auto!important;max-height:none!important;
+    overflow:visible!important;
+  }
+
+  body.reference-canvas-v594 #teammateInline{
+    width:100%!important;overflow:hidden!important;
+  }
+
+  body.reference-canvas-v594 .teammate-table-wrap{
+    width:100%!important;height:auto!important;max-height:430px!important;
+    overflow:auto!important;-webkit-overflow-scrolling:touch!important;
+  }
+
+  body.reference-canvas-v594 .teammate-table{
+    width:max-content!important;min-width:820px!important;
+  }
+
+  body.reference-canvas-v594 #menu .menu-grid{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+
+  body.reference-canvas-v594 #menu button{
+    width:100%!important;height:auto!important;min-height:50px!important;
+    padding:9px 10px!important;font-size:13px!important;white-space:normal!important;
+  }
+
+  body.reference-canvas-v594 #history.history{
+    min-height:130px!important;height:auto!important;max-height:320px!important;
+    overflow-y:auto!important;overflow-x:hidden!important;
+  }
+
+  body.reference-canvas-v594 #modal .modal-box{
+    width:100%!important;min-width:0!important;max-width:100%!important;
+    max-height:90vh!important;margin:0!important;border-radius:16px 16px 0 0!important;
+  }
+
+  body.reference-canvas-v594 #modal #modalContent{
+    width:100%!important;min-width:0!important;max-width:100%!important;
+    max-height:90vh!important;padding:15px!important;
+    overflow-y:auto!important;overflow-x:hidden!important;
+  }
+
+  body.reference-canvas-v594 #modal #modalContent .choices{
+    grid-template-columns:1fr!important;
+  }
+}
+
+@media screen and (max-width:430px){
+  body.reference-canvas-v594 #menu .menu-grid{grid-template-columns:1fr!important;}
+}
