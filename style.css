@@ -8364,3 +8364,106 @@ html body #modalContent button.agent-choice-v879 b {
     visibility:visible!important;
   }
 }
+
+
+/* =========================================================
+   V8.9.6 手機下半部順序與完整顯示整理
+   ========================================================= */
+@media screen and (max-width:900px){
+
+  body.reference-canvas-v594 .layout.screenshot-layout{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:10px!important;
+    padding:10px 10px calc(96px + env(safe-area-inset-bottom))!important;
+    overflow:visible!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+  }
+
+  body.reference-canvas-v594 .side,
+  body.reference-canvas-v594 .center,
+  body.reference-canvas-v594 .right{
+    display:contents!important;
+  }
+
+  /* 明確排定手機首頁內容順序 */
+  body.reference-canvas-v594 .side > .card:nth-child(1){order:10!important}
+  body.reference-canvas-v594 .side > .mini{order:20!important}
+  body.reference-canvas-v594 .center > .result-section{order:30!important}
+  body.reference-canvas-v594 .side > .card:nth-child(2){order:40!important}
+  body.reference-canvas-v594 .center > .teammate-inline-section{order:50!important}
+  body.reference-canvas-v594 .right > .card:nth-child(2){order:60!important}
+
+  /* 舊操作卡永遠不參與手機排版 */
+  body.reference-canvas-v594 .mobile-menu-source-card-v894,
+  body.reference-canvas-v594 .mobile-original-menu-card-v893,
+  body.reference-canvas-v594 .right > .card:first-child{
+    display:none!important;
+    height:0!important;
+    min-height:0!important;
+    max-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    overflow:hidden!important;
+  }
+
+  /* 隊友資訊只讓表格自己捲，不再撐斷整頁 */
+  body.reference-canvas-v594 .teammate-inline-section{
+    display:block!important;
+    position:relative!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow:visible!important;
+    margin:0!important;
+  }
+
+  body.reference-canvas-v594 .teammate-table-wrap{
+    width:100%!important;
+    height:auto!important;
+    max-height:420px!important;
+    overflow:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+
+  /* 人生紀錄固定接在隊友資訊後 */
+  body.reference-canvas-v594 .right > .card:nth-child(2){
+    display:block!important;
+    position:relative!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:170px!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:14px!important;
+    visibility:visible!important;
+    opacity:1!important;
+    overflow:visible!important;
+  }
+
+  body.reference-canvas-v594 #history.history{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:120px!important;
+    max-height:300px!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    visibility:visible!important;
+    opacity:1!important;
+  }
+
+  /* 固定底部導覽永遠高於內容 */
+  .mobile-bottom-nav-v883{
+    position:fixed!important;
+    left:6px!important;
+    right:6px!important;
+    bottom:max(6px,env(safe-area-inset-bottom))!important;
+    height:64px!important;
+    z-index:20000!important;
+  }
+}
