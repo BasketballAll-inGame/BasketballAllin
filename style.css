@@ -7091,3 +7091,138 @@ html body #modalContent button.agent-choice-v879 b {
     padding-bottom:24px!important;
   }
 }
+
+
+/* =========================================================
+   V8.8.8 手機創角：可完整滑到底 + select 破圖修正
+   ========================================================= */
+@media screen and (max-width:900px){
+
+  /* 創角前 modal 必須整個視窗可滑，不能只卡在內容中段 */
+  body.mobile-precreate-v887 #modal.modal{
+    position:fixed!important;
+    inset:0!important;
+    display:flex!important;
+    align-items:stretch!important;
+    justify-content:center!important;
+    padding:0!important;
+    overflow:hidden!important;
+  }
+
+  body.mobile-precreate-v887 #modal .modal-box{
+    position:relative!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:100dvh!important;
+    min-height:100dvh!important;
+    max-height:100dvh!important;
+    margin:0!important;
+    border-radius:0!important;
+    overflow:hidden!important;
+    display:flex!important;
+    flex-direction:column!important;
+  }
+
+  body.mobile-precreate-v887 #modal #modalContent{
+    flex:1 1 auto!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-height:0!important;
+    height:auto!important;
+    max-height:none!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+    padding:18px 18px calc(34px + env(safe-area-inset-bottom))!important;
+    box-sizing:border-box!important;
+    scroll-padding-bottom:40px!important;
+  }
+
+  /* 關閉鈕固定右上，不佔內容流 */
+  body.mobile-precreate-v887 #modal #modalClose{
+    position:fixed!important;
+    top:10px!important;
+    right:10px!important;
+    z-index:10001!important;
+    width:42px!important;
+    height:42px!important;
+    min-width:42px!important;
+    min-height:42px!important;
+    padding:0!important;
+    border-radius:12px!important;
+  }
+
+  /* 創角欄位統一，不要被舊主題產生奇怪的空白膠囊 */
+  body.mobile-precreate-v887 #modal #modalContent input,
+  body.mobile-precreate-v887 #modal #modalContent select,
+  body.mobile-precreate-v887 #modal #modalContent textarea{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    height:56px!important;
+    min-height:56px!important;
+    box-sizing:border-box!important;
+    margin:6px 0 14px!important;
+    padding:10px 14px!important;
+    border-radius:12px!important;
+    background:#fffaf2!important;
+    color:#4c3426!important;
+    border:1px solid #d9a66f!important;
+    font-size:16px!important;
+    line-height:1.25!important;
+    box-shadow:none!important;
+    outline:none!important;
+  }
+
+  /* select 用原生手機箭頭，移除舊版自製 pseudo/背景箭頭造成的破圖 */
+  body.mobile-precreate-v887 #modal #modalContent select{
+    -webkit-appearance:menulist!important;
+    appearance:auto!important;
+    background-image:none!important;
+    background-repeat:no-repeat!important;
+    background-position:initial!important;
+    padding-right:14px!important;
+  }
+
+  /* 移除可能掛在 select 包裝層上的舊版裝飾 */
+  body.mobile-precreate-v887 #modal #modalContent .select-wrap::before,
+  body.mobile-precreate-v887 #modal #modalContent .select-wrap::after,
+  body.mobile-precreate-v887 #modal #modalContent [class*="select"]::before,
+  body.mobile-precreate-v887 #modal #modalContent [class*="select"]::after{
+    content:none!important;
+    display:none!important;
+  }
+
+  /* 若舊 CSS 對 choices/field 產生絕對定位空殼，恢復正常流 */
+  body.mobile-precreate-v887 #modal #modalContent .form-grid,
+  body.mobile-precreate-v887 #modal #modalContent .field,
+  body.mobile-precreate-v887 #modal #modalContent label{
+    position:static!important;
+    width:100%!important;
+    max-width:100%!important;
+    transform:none!important;
+  }
+
+  body.mobile-precreate-v887 #modal #modalContent label{
+    display:block!important;
+    margin:0!important;
+    color:#4c3426!important;
+    font-size:15px!important;
+    line-height:1.35!important;
+  }
+
+  /* 開始遊戲按鈕要完整露出且可點 */
+  body.mobile-precreate-v887 #modal #modalContent button{
+    position:static!important;
+    max-width:100%!important;
+  }
+
+  body.mobile-precreate-v887 #modal #modalContent #startBtn,
+  body.mobile-precreate-v887 #modal #modalContent button[type="submit"]{
+    width:100%!important;
+    min-height:52px!important;
+    margin:8px 0 12px!important;
+    border-radius:12px!important;
+  }
+}
