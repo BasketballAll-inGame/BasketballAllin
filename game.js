@@ -80,7 +80,7 @@ const MASCOTS=["獵鷹","暴風","海狼","黑熊","猛虎","雷霆","巨鯊","�
 let G=null;
 
 
-/* V8.9.11：獎項顯示年份，例如「2026 新人王」 */
+/* V8.9.12：獎項顯示年份，例如「2026 新人王」 */
 function awardLabelV856(award, year){
   const y = Number(year || G.year || new Date().getFullYear());
   const text = String(award || "").trim();
@@ -631,7 +631,7 @@ function coachPoachV54(){
   return coachJobMarketV587();
 }
 
-function markSaveVersionV60(){if(G)G.saveVersion="8.9.11";}
+function markSaveVersionV60(){if(G)G.saveVersion="8.9.12";}
 function normalize(){
  if(!G.logs)G.logs=[];if(!G.history)G.history=[];if(!G.awards)G.awards=[];if(!G.hof)G.hof=[];if(!G.seasons)G.seasons=[];
  if(G.careerEnded==null)G.careerEnded=false;if(!G.max)G.max={};if(!G.breakthrough)G.breakthrough={};
@@ -789,7 +789,7 @@ function renderFeed(x){
 }
 function initPlayer(d){
  G={name:d.name,nationality:d.nationality||"台灣",height:+d.height,weight:+d.weight,number:+d.number,hand:d.hand,pos1:d.pos1,pos2:d.pos2,phase:"高中",hblDivision:null,year:1,startYear:d.startYear||2026,absoluteAge:16,absoluteCalendarYear:d.startYear||2026,actions:0,injury:0,leagueUsed:false,storyCount:0,logs:[],history:[],awards:[],hof:[],seasons:[],stats:{},max:{},breakthrough:{},school:pick(schools),team:null,theme:"theme-sport",careerEnded:false,proKey:null,proLeague:null,wealthTWD:0,coachSalaryTWD:null,careerMetrics:{teamChanges:0,nbaTrades:0,signedMoves:0,injuryEvents:0,healthySeasons:0,playoffSeasons:0,titles:0,breakthroughWins:0,breakthroughFails:0},teamStints:{},rosters:{}};
- // V8.9.11：五項基礎能力各自隨機 50～70，且平均至少 60。
+ // V8.9.12：五項基礎能力各自隨機 50～70，且平均至少 60。
  // 不再額外贈送 10 點初始配點。
  let initialBaseStats={};
  let initialBaseAvg=0;
@@ -1016,7 +1016,7 @@ function modernDashboardV7(){
 }
 
 
-/* ===== V8.9.11 隨機劇情引擎 ===== */
+/* ===== V8.9.12 隨機劇情引擎 ===== */
 const STORY_POOLS_V857={
  modern:[
   {title:"更衣室風波",icon:"🏀",text:"球隊近期戰績不穩，一名隊友受訪時暗示「有人太在意個人數據」。媒體開始猜測他是在影射你。",
@@ -2253,7 +2253,7 @@ function render(){
  if(!G.max)G.max={};
  ALL.forEach(k=>{if(!Number.isFinite(G.max[k]))G.max[k]=100;});normalize();
  document.body.className=`layout-v590 reference-canvas-v594 ${G.theme||"theme-sport"}`;
- // V8.9.11：render 主流程只做安全的 data-theme 同步，避免主題函式錯誤中斷整個遊戲資料渲染。
+ // V8.9.12：render 主流程只做安全的 data-theme 同步，避免主題函式錯誤中斷整個遊戲資料渲染。
  const themeMapV862={"theme-sport":"court","theme-court":"wood","theme-neon":"neon","theme-paper":"paper"};
  const safeThemeV862=themeMapV862[G.theme||"theme-sport"]||"court";
  document.body.setAttribute("data-theme",safeThemeV862);
@@ -2939,7 +2939,7 @@ function renderMenu(){
    ];
  }
 
- // V8.9.11：手機版不再產生舊操作按鈕。
+ // V8.9.12：手機版不再產生舊操作按鈕。
  // 直接保存原功能函式給底部「操作」視窗使用。
  if(window.matchMedia && window.matchMedia("(max-width:900px)").matches){
    window.mobileMenuItemsV894=items;
@@ -2995,12 +2995,14 @@ function modal(h){
  $("modalContent").innerHTML=h;
  $("modal").classList.remove("hidden");
  document.body.classList.add("modal-open-v899");
+ if(window.modalNavSyncV8912)window.modalNavSyncV8912();
  const creating=String(h).includes('id="startBtn"');
  document.body.classList.toggle("creating-player-v897",creating);
 }
 function closeModal(){
  $("modal").classList.add("hidden");
- document.body.classList.remove("creating-player-v897","modal-open-v899");
+ document.body.classList.remove("creating-player-v897","modal-open-v899","random-modal-open-v8912");
+ if(window.modalNavSyncV8912)window.modalNavSyncV8912();
  if(window.mobileUpdateNavV899)window.mobileUpdateNavV899();
 }
 $("modalClose").onclick=closeModal;
@@ -4536,7 +4538,7 @@ setTimeout(patchAwardYearsV856,0);
 
 
 
-/* V8.9.11：完整主題套用與即時重繪 */
+/* V8.9.12：完整主題套用與即時重繪 */
 function applyFullThemeV859(theme){
   try{
     const allowed=["court","wood","neon","paper"];
@@ -4567,7 +4569,7 @@ document.addEventListener("click",(e)=>{
 
 
 
-/* ================= V8.9.11 手機版統一控制器 ================= */
+/* ================= V8.9.12 手機版統一控制器 ================= */
 (function mobileControllerV899(){
   const isMobile=()=>window.matchMedia && window.matchMedia("(max-width:900px)").matches;
   const $id=id=>document.getElementById(id);
@@ -4587,4 +4589,37 @@ document.addEventListener("click",(e)=>{
   document.addEventListener("click",e=>{if(!isMobile())return;const nav=e.target.closest("[data-mobile-target-v883]");if(nav){e.preventDefault();const target=nav.getAttribute("data-mobile-target-v883");document.querySelectorAll("[data-mobile-target-v883]").forEach(x=>x.classList.remove("active"));nav.classList.add("active");if(target==="menu")openMain();else scrollToSection(target);return;}if(e.target.closest("#mobileMenuBtnV883")){quick(true);return;}if(e.target.closest("#mobileCloseV883")){quick(false);return;}if(e.target.closest("#mobileStyleV883")){quick(false);const b=$id("styleBtn");if(b)b.click();return;}if(e.target.closest("#mobileRestartV883")){quick(false);const b=$id("restartBtn");if(b)b.click();return;}if(e.target.closest("#mobileActionCloseV894")){closeAction();return;}const ov=e.target.closest("#mobileActionOverlayV894");if(ov&&e.target===ov)closeAction();});
   document.addEventListener("DOMContentLoaded",()=>{setCanvas();updateNavState();});window.addEventListener("load",()=>{setCanvas();updateNavState();});window.addEventListener("resize",()=>{setCanvas();updateNavState();},{passive:true});window.addEventListener("orientationchange",()=>setTimeout(()=>{setCanvas();updateNavState();},80),{passive:true});
   window.mobileUpdateNavV899=updateNavState;window.openMobileActionV899=openMain;
+})();
+
+
+/* ================= V8.9.12 Modal / 隨機劇情導覽列同步 ================= */
+(function modalNavSyncV8912(){
+  function sync(){
+    if(!(window.matchMedia && window.matchMedia("(max-width:900px)").matches))return;
+    const modal=document.getElementById("modal");
+    const open=!!(modal && !modal.classList.contains("hidden"));
+    document.body.classList.toggle("random-modal-open-v8912",open);
+
+    const nav=document.getElementById("mobileBottomNavV883");
+    if(nav){
+      if(open){
+        nav.style.setProperty("display","none","important");
+        nav.style.setProperty("visibility","hidden","important");
+        nav.style.setProperty("opacity","0","important");
+        nav.style.setProperty("pointer-events","none","important");
+      }else if(!document.body.classList.contains("creating-player-v897")){
+        nav.style.removeProperty("display");
+        nav.style.removeProperty("visibility");
+        nav.style.removeProperty("opacity");
+        nav.style.removeProperty("pointer-events");
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded",sync);
+  window.addEventListener("load",sync);
+  window.addEventListener("resize",sync,{passive:true});
+  document.addEventListener("click",()=>setTimeout(sync,0),true);
+  document.addEventListener("change",()=>setTimeout(sync,0),true);
+  window.modalNavSyncV8912=sync;
 })();
