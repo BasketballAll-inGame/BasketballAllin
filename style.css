@@ -8546,3 +8546,34 @@ html body #modalContent button.agent-choice-v879 b {
     pointer-events:none!important;
   }
 }
+
+
+/* V8.9.8：開始按鈕確保可點擊，不被任何透明層遮住 */
+@media screen and (max-width:900px){
+  body.creating-player-v897 #startBtn{
+    position:relative!important;
+    z-index:50!important;
+    pointer-events:auto!important;
+    touch-action:manipulation!important;
+    cursor:pointer!important;
+  }
+
+  body.creating-player-v897 #startBtn:disabled{
+    opacity:.72!important;
+    cursor:wait!important;
+  }
+
+  body.creating-player-v897 #modalContent{
+    pointer-events:auto!important;
+  }
+}
+
+
+/* V8.9.9 手機版穩定性清理 */
+@media screen and (max-width:900px){
+  body.creating-player-v897 #mobileBottomNavV883,
+  body.modal-open-v899 #mobileBottomNavV883{display:none!important;}
+  body:not(.creating-player-v897):not(.modal-open-v899) #mobileBottomNavV883{display:grid!important;}
+  .mobile-menu-source-card-v894{display:none!important;}
+  #menu{display:none!important;}
+}

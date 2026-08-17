@@ -566,3 +566,16 @@
 - 舊版其他 MutationObserver 即使想把底部列重新顯示，也會被 V8.9.7 強制壓過。
 - 創角視窗改成完整 100dvh，高度內可正常滑到「開始籃球人生」。
 - 建立成功後才恢復底部導覽。
+
+## V8.9.8 開始遊戲按鈕可靠性修正
+- 「開始籃球人生」改用獨立 startBasketballLifeV898() 函式。
+- 同時保留 onclick 與 capture click 兩條觸發路徑，手機 Chrome 點擊不會失效。
+- 點下後立即顯示「建立中…」，避免看起來沒反應。
+- 先建立角色並關閉創角 Modal，再執行 save/render；即使 render 某區塊出錯，也不會卡在創角畫面。
+- closeModal() 會同步移除創角狀態。
+- startBtn 提高 z-index 並強制 pointer-events/touch-action。
+
+## V8.9.9 全面錯誤檢查與手機 Runtime 清理
+- 移除歷次手機修正累積的 MutationObserver 與重複 click 攔截器。
+- 手機導覽、創角狀態、漢堡選單、操作 Overlay 改由單一控制器處理。
+- 移除已不用的 V8.9.2 操作 Overlay。
