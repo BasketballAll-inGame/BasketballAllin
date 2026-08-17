@@ -7226,3 +7226,390 @@ html body #modalContent button.agent-choice-v879 b {
     border-radius:12px!important;
   }
 }
+
+
+/* =========================================================
+   V8.8.9 手機版排版重疊總整理
+   目標：手機版任何區塊不得互相覆蓋。
+   此區為最後安全層，專門處理固定導覽、頂欄、Modal、
+   卡片、表格、法律聲明與創角表單的空間衝突。
+   ========================================================= */
+@media screen and (max-width:900px){
+
+  :root{
+    --m889-header-h:72px;
+    --m889-bottom-nav-h:66px;
+    --m889-gap:10px;
+  }
+
+  html,
+  body{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    overflow-x:hidden!important;
+  }
+
+  body.reference-canvas-v594{
+    position:relative!important;
+    min-height:100dvh!important;
+    padding-top:0!important;
+    padding-bottom:calc(var(--m889-bottom-nav-h) + 18px + env(safe-area-inset-bottom))!important;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+  }
+
+  /* ===== 頂部列：固定高度，不和內容重疊 ===== */
+  body.reference-canvas-v594 .topbar{
+    position:sticky!important;
+    top:0!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    min-height:var(--m889-header-h)!important;
+    height:auto!important;
+    z-index:500!important;
+    box-sizing:border-box!important;
+  }
+
+  /* 頂部所有子元素禁止超出 */
+  body.reference-canvas-v594 .topbar,
+  body.reference-canvas-v594 .topbar *{
+    max-width:100%!important;
+    box-sizing:border-box!important;
+  }
+
+  body.reference-canvas-v594 .brand,
+  body.reference-canvas-v594 #seasonLabel{
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+
+  /* 漢堡只固定在頂欄內，不蓋到內容 */
+  .mobile-menu-btn-v883{
+    position:absolute!important;
+    right:12px!important;
+    top:12px!important;
+    z-index:520!important;
+  }
+
+  /* ===== 法律聲明 ===== */
+  #legalNoticeV611,
+  #legalNoticeV611 > *,
+  .legal-notice-v611,
+  .legal-note-v884{
+    position:static!important;
+    width:auto!important;
+    max-width:calc(100% - 20px)!important;
+    margin:8px 10px 0!important;
+    box-sizing:border-box!important;
+    overflow:hidden!important;
+  }
+
+  /* ===== 主內容 ===== */
+  body.reference-canvas-v594 .layout.screenshot-layout{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    padding:10px!important;
+    padding-bottom:12px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:var(--m889-gap)!important;
+    overflow:visible!important;
+    box-sizing:border-box!important;
+  }
+
+  body.reference-canvas-v594 .side,
+  body.reference-canvas-v594 .center,
+  body.reference-canvas-v594 .right{
+    display:contents!important;
+  }
+
+  /* 所有主卡片強制正常文件流，禁止互壓 */
+  body.reference-canvas-v594 .card,
+  body.reference-canvas-v594 .mini,
+  body.reference-canvas-v594 .result-section,
+  body.reference-canvas-v594 .teammate-inline-section{
+    position:relative!important;
+    inset:auto!important;
+    top:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    left:auto!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    flex:none!important;
+    float:none!important;
+    transform:none!important;
+    overflow:visible!important;
+    box-sizing:border-box!important;
+  }
+
+  /* 標題列允許換行，不與右側 chip 疊在一起 */
+  body.reference-canvas-v594 .result-heading{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    align-items:flex-start!important;
+    gap:6px 8px!important;
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  body.reference-canvas-v594 .result-heading h3{
+    flex:1 1 180px!important;
+    min-width:0!important;
+    margin:0!important;
+    line-height:1.3!important;
+  }
+
+  body.reference-canvas-v594 .result-heading .season-chip,
+  body.reference-canvas-v594 #teamAverageInfo{
+    flex:0 1 auto!important;
+    max-width:100%!important;
+    white-space:normal!important;
+    text-align:center!important;
+    line-height:1.25!important;
+    margin-left:auto!important;
+  }
+
+  /* 本年事件內文/徽章不互壓 */
+  body.reference-canvas-v594 .feed-card,
+  body.reference-canvas-v594 .event-box,
+  body.reference-canvas-v594 .event-card{
+    position:relative!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    overflow:hidden!important;
+  }
+
+  body.reference-canvas-v594 .feed-with-icon,
+  body.reference-canvas-v594 .event-box-with-icon{
+    display:grid!important;
+    grid-template-columns:44px minmax(0,1fr)!important;
+    gap:10px!important;
+    align-items:start!important;
+  }
+
+  body.reference-canvas-v594 .feed-content,
+  body.reference-canvas-v594 .event-content,
+  body.reference-canvas-v594 .feed-text,
+  body.reference-canvas-v594 .event-text{
+    min-width:0!important;
+    max-width:100%!important;
+    overflow-wrap:anywhere!important;
+    word-break:break-word!important;
+  }
+
+  body.reference-canvas-v594 .feed-meta,
+  body.reference-canvas-v594 .event-meta{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    gap:5px!important;
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  body.reference-canvas-v594 .feed-meta span,
+  body.reference-canvas-v594 .event-meta span,
+  body.reference-canvas-v594 .tag,
+  body.reference-canvas-v594 .pill,
+  body.reference-canvas-v594 .badge{
+    white-space:normal!important;
+    max-width:100%!important;
+  }
+
+  /* ===== 能力值 ===== */
+  body.reference-canvas-v594 #stats{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+  }
+
+  body.reference-canvas-v594 #stats .stat{
+    min-width:0!important;
+  }
+
+  /* ===== 操作面板 ===== */
+  body.reference-canvas-v594 #menu,
+  body.reference-canvas-v594 #menu .menu-grid{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+  }
+
+  body.reference-canvas-v594 #menu button{
+    min-width:0!important;
+    max-width:100%!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+
+  /* ===== 隊友表格：只有表格區域水平滑動 ===== */
+  body.reference-canvas-v594 .teammate-inline-section{
+    overflow:hidden!important;
+  }
+
+  body.reference-canvas-v594 .teammate-table-wrap,
+  body.reference-canvas-v594 .result-table-wrap{
+    position:relative!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    overflow-x:auto!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+  }
+
+  body.reference-canvas-v594 .teammate-table{
+    min-width:760px!important;
+    width:max-content!important;
+    max-width:none!important;
+  }
+
+  /* ===== 人生紀錄 ===== */
+  body.reference-canvas-v594 #history.history{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    max-height:340px!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+  }
+
+  /* ===== 固定底部導覽 ===== */
+  .mobile-bottom-nav-v883{
+    position:fixed!important;
+    left:6px!important;
+    right:6px!important;
+    bottom:max(6px,env(safe-area-inset-bottom))!important;
+    width:auto!important;
+    height:var(--m889-bottom-nav-h)!important;
+    z-index:900!important;
+  }
+
+  .mobile-bottom-nav-v883 button{
+    min-width:0!important;
+    max-width:100%!important;
+    overflow:hidden!important;
+  }
+
+  /* 漢堡選單要在底部導覽與內容之上，但不超出畫面 */
+  .mobile-quick-menu-v883{
+    position:fixed!important;
+    top:calc(var(--m889-header-h) + 6px)!important;
+    right:10px!important;
+    bottom:auto!important;
+    width:min(210px,calc(100vw - 20px))!important;
+    max-height:calc(100dvh - var(--m889-header-h) - var(--m889-bottom-nav-h) - 28px)!important;
+    overflow-y:auto!important;
+    z-index:950!important;
+  }
+
+  /* ===== Modal 一律蓋在所有 UI 上方 ===== */
+  #modal.modal{
+    position:fixed!important;
+    inset:0!important;
+    z-index:10000!important;
+    overflow:hidden!important;
+  }
+
+  #modal .modal-box{
+    z-index:10001!important;
+    box-sizing:border-box!important;
+  }
+
+  #modal #modalContent{
+    box-sizing:border-box!important;
+    min-width:0!important;
+    max-width:100%!important;
+  }
+
+  #modal #modalClose{
+    z-index:10002!important;
+  }
+
+  /* 創角階段：底部導覽完全不顯示，Modal 完整可滑 */
+  body.mobile-precreate-v887 .mobile-bottom-nav-v883{
+    display:none!important;
+  }
+
+  body.mobile-precreate-v887{
+    padding-bottom:0!important;
+  }
+
+  body.mobile-precreate-v887 #modal .modal-box{
+    height:100dvh!important;
+    min-height:100dvh!important;
+    max-height:100dvh!important;
+  }
+
+  body.mobile-precreate-v887 #modal #modalContent{
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow-y:auto!important;
+    padding-bottom:calc(36px + env(safe-area-inset-bottom))!important;
+  }
+
+  /* 表單欄位永遠不互壓 */
+  body.mobile-precreate-v887 #modal #modalContent .form-grid{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:0!important;
+  }
+
+  body.mobile-precreate-v887 #modal #modalContent .field{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    margin:0!important;
+  }
+
+  body.mobile-precreate-v887 #modal #modalContent input,
+  body.mobile-precreate-v887 #modal #modalContent select,
+  body.mobile-precreate-v887 #modal #modalContent textarea{
+    position:static!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    margin:6px 0 14px!important;
+    transform:none!important;
+  }
+
+  /* 防止任何舊版絕對定位裝飾覆蓋 select */
+  body.mobile-precreate-v887 #modal #modalContent .field::before,
+  body.mobile-precreate-v887 #modal #modalContent .field::after,
+  body.mobile-precreate-v887 #modal #modalContent .select-wrap::before,
+  body.mobile-precreate-v887 #modal #modalContent .select-wrap::after{
+    pointer-events:none!important;
+  }
+}
+
+/* 小手機：標題與 chip 改成上下排列，徹底避免重疊 */
+@media screen and (max-width:430px){
+  body.reference-canvas-v594 .result-heading{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+  }
+
+  body.reference-canvas-v594 .result-heading .season-chip,
+  body.reference-canvas-v594 #teamAverageInfo{
+    width:100%!important;
+    margin-left:0!important;
+    justify-self:stretch!important;
+  }
+
+  body.reference-canvas-v594 .feed-with-icon,
+  body.reference-canvas-v594 .event-box-with-icon{
+    grid-template-columns:40px minmax(0,1fr)!important;
+    gap:8px!important;
+  }
+}
