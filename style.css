@@ -6943,3 +6943,123 @@ html body #modalContent button.agent-choice-v879 b {
   body.reference-canvas-v594 [class*='player-photo-wrap'],body.reference-canvas-v594 [class*='playerPhotoWrap'],body.reference-canvas-v594 [class*='avatar-wrap'],body.reference-canvas-v594 [class*='portrait-wrap'],body.reference-canvas-v594 [class*='headshot-wrap']{display:none!important;width:0!important;min-width:0!important;max-width:0!important;margin:0!important;padding:0!important;}
   body.reference-canvas-v594 .profile,body.reference-canvas-v594 #profile{padding-left:14px!important;margin-left:0!important;}
 }
+
+/* ===== V8.8.6 手機首頁字級與排版精修 ===== */
+@media screen and (max-width: 900px){
+  /* 本年事件標題：避免兩行過大、右側徽章擠壓 */
+  body.reference-canvas-v594 .events h3,
+  body.reference-canvas-v594 #eventsPanel h3,
+  body.reference-canvas-v594 .main-events h3,
+  body.reference-canvas-v594 .center h3{
+    font-size:18px!important;
+    line-height:1.25!important;
+    letter-spacing:.02em!important;
+  }
+
+  /* 卡片標題列允許合理換行，但不要互相重疊 */
+  body.reference-canvas-v594 .card-head,
+  body.reference-canvas-v594 .section-head,
+  body.reference-canvas-v594 .panel-head{
+    gap:8px!important;
+    align-items:flex-start!important;
+  }
+
+  /* 年度/年齡/聯盟徽章縮小 */
+  body.reference-canvas-v594 .badge,
+  body.reference-canvas-v594 .chip,
+  body.reference-canvas-v594 .pill,
+  body.reference-canvas-v594 [class*="badge"]{
+    font-size:10.5px!important;
+    line-height:1.15!important;
+    padding:5px 8px!important;
+    min-height:0!important;
+    white-space:nowrap!important;
+  }
+
+  /* 年份資訊列 */
+  body.reference-canvas-v594 .year-strip,
+  body.reference-canvas-v594 [class*="year-strip"],
+  body.reference-canvas-v594 [class*="season-strip"]{
+    padding:10px 12px!important;
+    gap:7px!important;
+    flex-wrap:wrap!important;
+  }
+
+  /* 事件卡片：圖示、標題、文字比例重新整理 */
+  body.reference-canvas-v594 .event-card,
+  body.reference-canvas-v594 [class*="event-card"]{
+    padding:12px!important;
+    gap:10px!important;
+    border-radius:15px!important;
+  }
+  body.reference-canvas-v594 .event-card .icon,
+  body.reference-canvas-v594 [class*="event-card"] [class*="icon"]{
+    width:52px!important;
+    min-width:52px!important;
+    height:52px!important;
+    font-size:27px!important;
+  }
+  body.reference-canvas-v594 .event-card .title,
+  body.reference-canvas-v594 [class*="event-card"] [class*="title"]{
+    font-size:14px!important;
+    line-height:1.25!important;
+    margin-bottom:4px!important;
+  }
+  body.reference-canvas-v594 .event-card p,
+  body.reference-canvas-v594 [class*="event-card"] p{
+    font-size:12.5px!important;
+    line-height:1.6!important;
+    margin:0!important;
+  }
+
+  /* 隊友資訊標題與名單統計：改成上下排列，避免擠成兩行大字 */
+  body.reference-canvas-v594 .teammates h3,
+  body.reference-canvas-v594 #teamPanel h3,
+  body.reference-canvas-v594 [class*="team"] h3{
+    font-size:18px!important;
+    line-height:1.25!important;
+    word-break:keep-all!important;
+  }
+  body.reference-canvas-v594 .teammates .panel-head,
+  body.reference-canvas-v594 [class*="team"] .panel-head{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:5px!important;
+  }
+  body.reference-canvas-v594 .teammates .muted,
+  body.reference-canvas-v594 [class*="team"] .muted{
+    font-size:10.5px!important;
+    line-height:1.35!important;
+  }
+
+  /* 表格手機字級稍降，欄頭不再巨大 */
+  body.reference-canvas-v594 table{
+    font-size:10.5px!important;
+  }
+  body.reference-canvas-v594 th{
+    font-size:10.5px!important;
+    line-height:1.2!important;
+    padding:6px 5px!important;
+  }
+  body.reference-canvas-v594 td{
+    font-size:10px!important;
+    padding:5px 5px!important;
+  }
+}
+
+@media screen and (max-width: 430px){
+  body.reference-canvas-v594 .events h3,
+  body.reference-canvas-v594 #eventsPanel h3,
+  body.reference-canvas-v594 .main-events h3,
+  body.reference-canvas-v594 .center h3,
+  body.reference-canvas-v594 .teammates h3,
+  body.reference-canvas-v594 #teamPanel h3,
+  body.reference-canvas-v594 [class*="team"] h3{
+    font-size:17px!important;
+  }
+  body.reference-canvas-v594 .event-card p,
+  body.reference-canvas-v594 [class*="event-card"] p{
+    font-size:12px!important;
+  }
+}
